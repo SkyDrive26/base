@@ -1,4 +1,4 @@
-// SEE I AM CHANGED! :D
+
   var wserver = 'ws://127.0.0.1:$PORT';
   var connected = 0;
   var beenconnected = 0;

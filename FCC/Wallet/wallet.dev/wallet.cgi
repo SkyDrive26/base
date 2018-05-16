@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#SEE I AM CHANGED! :D
+
 # FCC Local Wallet Server
 #use lib qw(../modules);
 use strict;
@@ -21,7 +21,7 @@ use JSON;
 ###### Wallet Updater ################################
 my $version;
 my $VERSION;
-$version->{main} = 1; $version->{major} = 1; $version->{minor} = 1;
+$version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
