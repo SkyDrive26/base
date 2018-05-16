@@ -18,7 +18,7 @@ use FCC::leaf 2.01 qw(startleaf leafloop closeleaf);
 use gerr qw(error);
 use JSON;
 
-###### Wallet Updater ################################
+###### Wallet Updater by SkyDrive ################################
 my $version;
 my $VERSION;
 $version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
