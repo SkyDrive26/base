@@ -25,6 +25,8 @@ $version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
+print "Our version is: ".$version->{main}.".".$version->{major}.".".$version->{minor}."\n";
+print "Github version is: ".$MAIN.".".$MAJOR.".".$MINOR."\n";
 
 if($MAIN > $version->{main}){
 	print "Updating.. Please restart!";
