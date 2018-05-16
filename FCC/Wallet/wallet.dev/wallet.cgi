@@ -5,6 +5,7 @@
 use strict;
 no strict 'refs';
 use warnings;
+use LWP::Simple;
 use Time::HiRes qw(usleep gettimeofday);
 use Crypt::Ed25519;
 use Browser::Open qw(open_browser);
@@ -16,6 +17,56 @@ use FCC::wallet 2.01 qw(validwallet validwalletpassword walletisencoded newwalle
 use FCC::leaf 2.01 qw(startleaf leafloop closeleaf);
 use gerr qw(error);
 use JSON;
+
+###### Wallet Updater ################################
+my $version;
+my $VERSION;
+$version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
+
+my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
+my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
+
+if($MAIN > $version->{main}){
+	print "Updating.. Please restart!";
+	my $cgi = gfio::open("wallet.cgi", 'w');
+	my $js = gfio::open("wallet.js", 'w');
+	my $htm = gfio::open("wallet.htm", 'w');
+	my $css = gfio::open("wallet.css", 'w'); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	gfio::closeall;
+	exit;
+}elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
+	print "Updating.. Please restart!";
+	my $cgi = gfio::open("wallet.cgi", 'w');
+	my $js = gfio::open("wallet.js", 'w');
+	my $htm = gfio::open("wallet.htm", 'w');
+	my $css = gfio::open("wallet.css", 'w'); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	gfio::closeall;
+	exit;
+}elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
+	print "Updating.. Please restart!";
+	my $cgi = gfio::open("wallet.cgi", 'w');
+	my $js = gfio::open("wallet.js", 'w');
+	my $htm = gfio::open("wallet.htm", 'w');
+	my $css = gfio::open("wallet.css", 'w'); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	gfio::closeall;
+	exit;
+}else{
+	print "No new version";
+}
+
+######################################################
 
 ###### Use this to force connecting to trusted nodes ###########################
 
