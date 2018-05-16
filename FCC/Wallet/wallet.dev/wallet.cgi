@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-
+#SEE I AM CHANGED :D
 # FCC Local Wallet Server
 #use lib qw(../modules);
 use strict;
@@ -21,7 +21,7 @@ use JSON;
 ###### Wallet Updater by SkyDrive ################################
 my $version;
 my $VERSION;
-$version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
+$version->{main} = 1; $version->{major} = 1; $version->{minor} = 1;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
@@ -39,6 +39,7 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exec("perl wallet.cgi");
 	exit;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
 	print "Updating.. Please restart!";
@@ -51,6 +52,7 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exec("perl wallet.cgi");
 	exit;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
 	print "Updating.. Please restart!";
@@ -63,6 +65,7 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exec("perl wallet.cgi");
 	exit;
 }
 
