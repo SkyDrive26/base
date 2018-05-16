@@ -21,19 +21,13 @@ use JSON;
 ###### Wallet Updater ################################
 my $version;
 my $VERSION;
-$version->{main} = 0; $version->{major} = 1; $version->{minor} = 1;
+$version->{main} = 1; $version->{major} = 1; $version->{minor} = 1;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
 
-print "Offline: \n";
-print $version->{main}.".".$version->{major}.".".$version->{minor}."\n";
-
-print "Online: \n";
-print $MAIN.".".$MAJOR.".".$MINOR."\n";
-
 if($MAIN > $version->{main}){
-	print "New version available";
+	print "Updating.. Please restart!";
 	my $cgi = gfio::open("wallet.cgi", w);
 	my $js = gfio::open("wallet.js", w);
 	my $htm = gfio::open("wallet.htm", w);
@@ -43,8 +37,9 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exit;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
-	print "New version available";
+	print "Updating.. Please restart!";
 	my $cgi = gfio::open("wallet.cgi", w);
 	my $js = gfio::open("wallet.js", w);
 	my $htm = gfio::open("wallet.htm", w);
@@ -54,8 +49,9 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exit;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
-	print "New version available";
+	print "Updating.. Please restart!";
 	my $cgi = gfio::open("wallet.cgi", w);
 	my $js = gfio::open("wallet.js", w);
 	my $htm = gfio::open("wallet.htm", w);
@@ -65,6 +61,7 @@ if($MAIN > $version->{main}){
 	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
+	exit;
 }else{
 	print "No new version";
 }
@@ -750,6 +747,21 @@ sub slaveminercall {
   if ($command eq 'mine') {
     print "miner New challenge: Coincount = $data->{coincount} Difficulty = $data->{diff} Reward = $data->{reward} Len = $data->{length} Hints = $data->{hints}\n";
     if (!$MINING || ($data->{coincount} > $MINEDATA->{coincount})) {
+      if ($MINER->{client}) { wsmessage($MINER->{client},"miner New challenge: Coincount = $data->{coincount} Difficulty = $data->{diff} Reward = $data->{reward} Len = $data->{length} Hints = $data->{hints}") }
+      challenge($data);
+    }
+  } elsif ($command eq 'solution') {
+    print " *** Found solution!! Earned FCC ".extdec($MINEDATA->{reward} / 100000000)." ***\n";
+    if ($MINER->{client}) {
+      wsmessage($MINER->{client},"miner <span style=\"color: darkgreen; font-weight: bold\">Found solution!! Earned FCC ".extdec($MINEDATA->{reward} / 100000000)."</span>");
+      my $ctm=gettimeofday();
+      push @{$MINER->{client}{fcc}{jobs}},{ command => 'balance', wallet => $MINERWALLET, time => $ctm }
+    }
+  }
+}
+
+# EOF (C) 2018 Chaosje
+>{coincount})) {
       if ($MINER->{client}) { wsmessage($MINER->{client},"miner New challenge: Coincount = $data->{coincount} Difficulty = $data->{diff} Reward = $data->{reward} Len = $data->{length} Hints = $data->{hints}") }
       challenge($data);
     }
