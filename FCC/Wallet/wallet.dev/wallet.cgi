@@ -34,10 +34,10 @@ if($MAIN > $version->{main}){
 	my $js = gfio::open("wallet.js", 'w');
 	my $htm = gfio::open("wallet.htm", 'w');
 	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 	exit;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
@@ -46,10 +46,10 @@ if($MAIN > $version->{main}){
 	my $js = gfio::open("wallet.js", 'w');
 	my $htm = gfio::open("wallet.htm", 'w');
 	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 	exit;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
@@ -58,10 +58,10 @@ if($MAIN > $version->{main}){
 	my $js = gfio::open("wallet.js", 'w');
 	my $htm = gfio::open("wallet.htm", 'w');
 	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 	exit;
 }else{
