@@ -17,17 +17,17 @@ print $MAIN.".".$MAJOR.".".$MINOR."\n";
 
 if($MAIN > $version->{main}){
 	print "New version available";
-	my $handle = gfio::open(test.cgi, w);
+	my $handle = gfio::open("test.cgi", w);
 	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
 	gfio::closeall;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
 	print "New version available";
-	my $handle = gfio::open(test.cgi, w);
+	my $handle = gfio::open("test.cgi", w);
 	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
 	gfio::closeall;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
 	print "New version available";
-	my $handle = gfio::open(test.cgi, w);
+	my $handle = gfio::open("test.cgi", w);
 	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
 	gfio::closeall;
 }else{

@@ -5,6 +5,7 @@
 use strict;
 no strict 'refs';
 use warnings;
+use LWP::Simple;
 use Time::HiRes qw(usleep gettimeofday);
 use Crypt::Ed25519;
 use Browser::Open qw(open_browser);
@@ -16,6 +17,42 @@ use FCC::wallet 2.01 qw(validwallet validwalletpassword walletisencoded newwalle
 use FCC::leaf 2.01 qw(startleaf leafloop closeleaf);
 use gerr qw(error);
 use JSON;
+
+###### Wallet Updater ################################
+my $version;
+my $VERSION;
+$version->{main} = 0; $version->{major} = 0; $version->{minor} = 0;
+
+my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.txt';
+my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
+
+print "Offline: \n";
+print $version->{main}.".".$version->{major}.".".$version->{minor}."\n";
+
+print "Online: \n";
+print $MAIN.".".$MAJOR.".".$MINOR."\n";
+
+if($MAIN > $version->{main}){
+	print "New version available";
+	my $handle = gfio::open("test.cgi", w);
+	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	gfio::closeall;
+}elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
+	print "New version available";
+	my $handle = gfio::open("test.cgi", w);
+	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	gfio::closeall;
+}elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
+	print "New version available";
+	my $handle = gfio::open("test.cgi", w);
+	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	gfio::closeall;
+}else{
+	print "No new version";
+}
+
+
+######################################################
 
 ###### Use this to force connecting to trusted nodes ###########################
 
