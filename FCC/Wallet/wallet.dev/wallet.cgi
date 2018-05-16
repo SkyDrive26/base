@@ -64,8 +64,6 @@ if($MAIN > $version->{main}){
 	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 	exit;
-}else{
-	print "No new version";
 }
 
 ######################################################
