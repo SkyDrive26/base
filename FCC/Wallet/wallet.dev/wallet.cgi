@@ -23,7 +23,7 @@ my $version;
 my $VERSION;
 $version->{main} = 0; $version->{major} = 0; $version->{minor} = 0;
 
-my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.txt';
+my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
 
 print "Offline: \n";
@@ -34,18 +34,36 @@ print $MAIN.".".$MAJOR.".".$MINOR."\n";
 
 if($MAIN > $version->{main}){
 	print "New version available";
-	my $handle = gfio::open("test.cgi", w);
-	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	my $cgi = gfio::open("wallet.cgi", w);
+	my $js = gfio::open("wallet.js", w);
+	my $htm = gfio::open("wallet.htm", w);
+	my $css = gfio::open("wallet.css", w); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
 	print "New version available";
-	my $handle = gfio::open("test.cgi", w);
-	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	my $cgi = gfio::open("wallet.cgi", w);
+	my $js = gfio::open("wallet.js", w);
+	my $htm = gfio::open("wallet.htm", w);
+	my $css = gfio::open("wallet.css", w); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
 	print "New version available";
-	my $handle = gfio::open("test.cgi", w);
-	$handle->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/test/test.cgi');
+	my $cgi = gfio::open("wallet.cgi", w);
+	my $js = gfio::open("wallet.js", w);
+	my $htm = gfio::open("wallet.htm", w);
+	my $css = gfio::open("wallet.css", w); 
+	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.cgi');
+	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.js');
+	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.htm');
+	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/FCC/Wallet/wallet.dev/wallet.css');
 	gfio::closeall;
 }else{
 	print "No new version";
