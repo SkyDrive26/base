@@ -1,10 +1,11 @@
 #!/usr/bin/perl
-# I Changed :D
+# I changed :D
 # FCC Local Wallet Server
 #use lib qw(../modules);
 use strict;
 no strict 'refs';
 use warnings;
+use LWP::Simpel;
 use Time::HiRes qw(usleep gettimeofday);
 use Crypt::Ed25519;
 use Browser::Open qw(open_browser);
