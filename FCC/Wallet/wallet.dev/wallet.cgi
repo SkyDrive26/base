@@ -1,10 +1,11 @@
 #!/usr/bin/perl
-# I Changed
+
 # FCC Local Wallet Server
 #use lib qw(../modules);
 use strict;
 no strict 'refs';
 use warnings;
+use File::Download;
 use LWP::Simple;
 use Time::HiRes qw(usleep gettimeofday);
 use Crypt::Ed25519;
@@ -19,6 +20,10 @@ use gerr qw(error);
 use JSON;
 
 ###### Wallet Updater by SkyDrive ################################
+my $cgi = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi";
+my $js = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js";
+my $htm = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm";
+my $css = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css";
 my $version;
 my $VERSION;
 $version->{main} = 4; $version->{major} = 1; $version->{minor} = 1;
@@ -30,41 +35,29 @@ print "Github version is: ".$MAIN.".".$MAJOR.".".$MINOR."\n";
 
 if($MAIN > $version->{main}){
 	print "Updating.. Please restart!";
-	my $cgi = gfio::open("wallet.cgi", 'w');
-	my $js = gfio::open("wallet.js", 'w');
-	my $htm = gfio::open("wallet.htm", 'w');
-	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
-	gfio::closeall;
+	my $dwn = File::Download->new({ overwrite => 1 });
+	$dwn->download($cgi);
+	$dwn->download($js);
+	$dwn->download($htm);
+	$dwn->download($css);
 	exec("perl wallet.cgi");
 	exit;
 }elsif($MAJOR > $version->{major} && $MAIN >= $version->{main}){
 	print "Updating.. Please restart!";
-	my $cgi = gfio::open("wallet.cgi", 'w');
-	my $js = gfio::open("wallet.js", 'w');
-	my $htm = gfio::open("wallet.htm", 'w');
-	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
-	gfio::closeall;
+	my $dwn = File::Download->new({ overwrite => 1 });
+	$dwn->download($cgi);
+	$dwn->download($js);
+	$dwn->download($htm);
+	$dwn->download($css);
 	exec("perl wallet.cgi");
 	exit;
 }elsif($MINOR > $version->{minor} && $MAJOR >= $version->{major} && $MAIN >= $version->{main}){
 	print "Updating.. Please restart!";
-	my $cgi = gfio::open("wallet.cgi", 'w');
-	my $js = gfio::open("wallet.js", 'w');
-	my $htm = gfio::open("wallet.htm", 'w');
-	my $css = gfio::open("wallet.css", 'w'); 
-	$cgi->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.cgi');
-	$js->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.js');
-	$htm->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.htm');
-	$css->write(get 'https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css');
-	gfio::closeall;
+	my $dwn = File::Download->new({ overwrite => 1 });
+	$dwn->download($cgi);
+	$dwn->download($js);
+	$dwn->download($htm);
+	$dwn->download($css);
 	exec("perl wallet.cgi");
 	exit;
 }
