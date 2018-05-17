@@ -21,7 +21,7 @@ use JSON;
 ###### Wallet Updater by SkyDrive ################################
 my $version;
 my $VERSION;
-$version->{main} = 2; $version->{major} = 1; $version->{minor} = 1;
+$version->{main} = 3; $version->{major} = 1; $version->{minor} = 1;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/master/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
