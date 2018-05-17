@@ -26,7 +26,7 @@ my $htm = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/w
 my $css = "https://raw.githubusercontent.com/SkyDrive26/base/master/FCC/Wallet/wallet.dev/wallet.css";
 my $version;
 my $VERSION;
-$version->{main} = 4; $version->{major} = 1; $version->{minor} = 1;
+$version->{main} = 4; $version->{major} = 1; $version->{minor} = 2;
 
 my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/master/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
