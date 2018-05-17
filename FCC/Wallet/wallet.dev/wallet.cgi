@@ -1,11 +1,10 @@
 #!/usr/bin/perl
-#SEE I AM CHANGED :D :D
+
 # FCC Local Wallet Server
 #use lib qw(../modules);
 use strict;
 no strict 'refs';
 use warnings;
-use LWP::Simple;
 use Time::HiRes qw(usleep gettimeofday);
 use Crypt::Ed25519;
 use Browser::Open qw(open_browser);
@@ -23,7 +22,7 @@ my $version;
 my $VERSION;
 $version->{main} = 1; $version->{major} = 1; $version->{minor} = 1;
 
-my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/dev/version.txt';
+my $text = get 'https://raw.githubusercontent.com/SkyDrive26/base/master/version.txt';
 my ($MAIN, $MAJOR, $MINOR) = split(/\./, $text); #Split on "." doesnt work?
 print "Our version is: ".$version->{main}.".".$version->{major}.".".$version->{minor}."\n";
 print "Github version is: ".$MAIN.".".$MAJOR.".".$MINOR."\n";
